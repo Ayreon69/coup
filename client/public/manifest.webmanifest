@@ -1,0 +1,11 @@
+{
+  "name": "Coup",
+  "short_name": "Coup",
+  "description": "Deux lettres scellées, et une cour de menteurs.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d1630",
+  "theme_color": "#0d1630",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
