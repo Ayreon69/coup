@@ -25,7 +25,7 @@ export function App() {
       )}
       <AnimatePresence>
         {toast && (
-          <motion.div key={toast.id} className={`toast is-${toast.tone}`} role="alert" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} onClick={() => useStore.setState({ toast: null })}>
+          <motion.div key={toast.id} className={`toast is-${toast.tone}`} role="alert" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ opacity: 0, y: 10 }} onClick={() => useStore.setState({ toast: null })}>
             {toast.text}
           </motion.div>
         )}

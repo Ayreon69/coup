@@ -70,7 +70,7 @@ export function Final({ view }: { view: RoomView }) {
       </header>
 
       {winner && (
-        <motion.section className="final-winner" initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 18 }}>
+        <motion.section className="final-winner" initial={{ scale: 0.92 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 18 }}>
           <span className="eyebrow">{iWon ? 'La cour est à toi' : 'Règne désormais sur la cour'}</span>
           <div className="final-medal">
             <Shield avatar={winner.avatar} className="final-shield" />
@@ -81,7 +81,7 @@ export function Final({ view }: { view: RoomView }) {
               <p className="muted">{iWon ? 'Tes lettres encore scellées :' : 'Ses lettres encore scellées, enfin ouvertes :'}</p>
               <div className="final-cards">
                 {winner.kept.map((c, i) => (
-                  <motion.span key={i} initial={{ rotateY: 90 }} animate={{ rotateY: 0 }} transition={{ delay: 0.4 + i * 0.2, duration: 0.4 }}>
+                  <motion.span key={i} initial={{ scale: 0.7, rotate: -8 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.3 + i * 0.15, type: 'spring', stiffness: 260, damping: 16 }}>
                     <CardFace c={c} />
                   </motion.span>
                 ))}

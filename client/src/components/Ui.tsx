@@ -67,9 +67,10 @@ export function Modal({ open, onClose, title, children, wide }: { open: boolean;
   }, [open, onClose]);
 
   // Pas d'animation de sortie : une fenêtre fermée disparaît tout de suite, rien n'attend après elle.
+  // Et rien ne commence invisible : même si le navigateur suspend les animations, la fenêtre se voit.
   if (!open) return null;
   return (
-    <motion.div className="modal-back" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.15 }} onClick={onClose}>
+    <div className="modal-back" onClick={onClose}>
       <motion.div
         ref={box}
         tabIndex={-1}
@@ -77,8 +78,8 @@ export function Modal({ open, onClose, title, children, wide }: { open: boolean;
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        initial={{ y: 28, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ y: 28 }}
+        animate={{ y: 0 }}
         transition={{ type: 'spring', stiffness: 380, damping: 32 }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -90,7 +91,7 @@ export function Modal({ open, onClose, title, children, wide }: { open: boolean;
         </header>
         <div className="modal-body">{children}</div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 

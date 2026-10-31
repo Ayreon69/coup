@@ -57,7 +57,7 @@ export function Lobby({ view }: { view: RoomView }) {
             Inviter
           </Button>
           <Button icon={copied ? <Check size={18} /> : <Copy size={18} />} onClick={copy}>
-            {copied ? 'Lien copié' : 'Copier le lien'}
+            {copied ? 'Copié' : 'Copier le lien'}
           </Button>
           <Button icon={<QrCode size={18} />} onClick={() => setQr(true)} aria-label="Afficher le QR code" />
         </div>

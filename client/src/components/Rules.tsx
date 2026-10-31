@@ -19,13 +19,22 @@ export function RulesModal() {
           <h3>À ton tour, une action</h3>
           <ul className="rule-actions">
             <li>
-              <Coins size={18} aria-hidden /> <b>Revenu</b> : +1 ducat. Personne ne peut l'empêcher.
+              <Coins size={18} aria-hidden />
+              <span>
+                <b>Revenu</b> : +1 ducat. Personne ne peut l'empêcher.
+              </span>
             </li>
             <li>
-              <HandCoins size={18} aria-hidden /> <b>Aide étrangère</b> : +2 ducats. N'importe qui peut la bloquer en se disant Duchesse.
+              <HandCoins size={18} aria-hidden />
+              <span>
+                <b>Aide étrangère</b> : +2 ducats. N'importe qui peut la bloquer en se disant Duchesse.
+              </span>
             </li>
             <li>
-              <Swords size={18} aria-hidden /> <b>Coup d'État</b> : paie 7 ducats, la cible perd une influence. Imparable. <b>Obligatoire à partir de 10 ducats.</b>
+              <Swords size={18} aria-hidden />
+              <span>
+                <b>Coup d'État</b> : paie 7 ducats, la cible perd une influence. Imparable. <b>Obligatoire à partir de 10 ducats.</b>
+              </span>
             </li>
           </ul>
         </section>

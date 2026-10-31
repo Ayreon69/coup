@@ -102,7 +102,7 @@ function Seat({ p, t, emotes, targetable, chosen, onPick }: { p: PlayerView; t: 
         </span>
         <span className="seat-cards">
           {cards.map((c, i) => (
-            <motion.span key={`${i}-${c ?? 'x'}`} initial={c ? { rotateY: 90 } : false} animate={{ rotateY: 0 }} transition={{ duration: 0.35 }}>
+            <motion.span key={`${i}-${c ?? 'x'}`} initial={c ? { scale: 0.5, rotate: -20 } : false} animate={{ scale: 1, rotate: 0 }} transition={{ duration: 0.35 }}>
               <MiniCard c={c} />
             </motion.span>
           ))}
@@ -139,7 +139,7 @@ function Stage({ view, t, nameOf, hasPad }: { view: RoomView; t: TurnView; nameO
     const meP = view.players.find((p) => p.id === me);
     return (
       <div className={cls('stage', 'is-choose', mine && 'is-mine')} aria-live="polite">
-        <motion.div key={`c${t.number}`} className="stage-turn" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
+        <motion.div key={`c${t.number}`} className="stage-turn" initial={{ y: 8 }} animate={{ y: 0 }} transition={{ duration: 0.25 }}>
           <Shield avatar={actor?.avatar} className="stage-shield" title="" />
           {mine ? (
             <div>
@@ -179,7 +179,7 @@ function Stage({ view, t, nameOf, hasPad }: { view: RoomView; t: TurnView; nameO
 
   return (
     <div className={cls('stage', `is-${t.phase}`, mine && 'is-mine', t.targetId === me && 'is-target')} aria-live="polite">
-      <motion.article key={`a${t.number}`} className="decree parchment" initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.22 }}>
+      <motion.article key={`a${t.number}`} className="decree parchment" initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 0.22 }}>
         <div className="decree-head">
           <Shield avatar={actor?.avatar} className="decree-shield" title="" />
           <span className="decree-who">{mine ? (claim ? 'Tu' : 'Toi') : nameOf(t.actorId)}</span>
@@ -193,7 +193,7 @@ function Stage({ view, t, nameOf, hasPad }: { view: RoomView; t: TurnView; nameO
         </div>
         <div className="decree-body">
           {claim ? (
-            <motion.span key={`s${t.number}`} initial={{ scale: 1.7, rotate: -14, opacity: 0 }} animate={{ scale: 1, rotate: -6, opacity: 1 }} transition={{ type: 'spring', stiffness: 420, damping: 16 }}>
+            <motion.span key={`s${t.number}`} initial={{ scale: 1.6, rotate: -16 }} animate={{ scale: 1, rotate: -6 }} transition={{ type: 'spring', stiffness: 420, damping: 22 }}>
               <Seal c={claim} className="decree-seal" broken={showVerdict && c?.on === 'action' && !c.truthful} />
             </motion.span>
           ) : (
@@ -209,7 +209,7 @@ function Stage({ view, t, nameOf, hasPad }: { view: RoomView; t: TurnView; nameO
         </div>
 
         {t.block && (
-          <motion.div className="decree-block" style={charVars(t.block.as)} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
+          <motion.div className="decree-block" style={charVars(t.block.as)} initial={{ x: -10 }} animate={{ x: 0 }}>
             <ShieldCheck size={18} aria-hidden />
             <span>
               {subject(t.block.by, me, nameOf)} {t.block.by === me ? 'bloques' : 'bloque'}, {t.block.by === me ? 'te disant' : 'se disant'} <b>{CHARACTER_INFO[t.block.as].name}</b>
@@ -219,7 +219,7 @@ function Stage({ view, t, nameOf, hasPad }: { view: RoomView; t: TurnView; nameO
         )}
 
         {c && (
-          <motion.div className={cls('decree-challenge', showVerdict && (c.truthful ? 'is-true' : 'is-false'))} initial={{ opacity: 0, scale: 1.15 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.2 }}>
+          <motion.div className={cls('decree-challenge', showVerdict && (c.truthful ? 'is-true' : 'is-false'))} initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 0.2 }}>
             <Swords size={18} aria-hidden />
             <span>
               {subject(c.by, me, nameOf)} {c.by === me ? 'contestes' : 'conteste'}{' '}
@@ -229,11 +229,11 @@ function Stage({ view, t, nameOf, hasPad }: { view: RoomView; t: TurnView; nameO
         )}
 
         {showVerdict && c && (
-          <motion.div className={cls('verdict', c.truthful ? 'is-true' : 'is-false')} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
+          <motion.div className={cls('verdict', c.truthful ? 'is-true' : 'is-false')} initial={{ y: 6 }} animate={{ y: 0 }} transition={{ duration: 0.25 }}>
             {c.truthful ? (
               <>
                 {t.phase === 'reveal' && (
-                  <motion.span className="verdict-card" initial={{ rotateY: 90 }} animate={{ rotateY: 0 }} transition={{ duration: 0.4 }}>
+                  <motion.span className="verdict-card" initial={{ scale: 0.6, rotate: -10 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }}>
                     <CardFace c={c.claim} />
                   </motion.span>
                 )}
@@ -254,7 +254,7 @@ function Stage({ view, t, nameOf, hasPad }: { view: RoomView; t: TurnView; nameO
         )}
 
         {t.phase === 'outcome' && (
-          <motion.div className={cls('decree-outcome', `is-${t.outcome?.result ?? 'success'}`)} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
+          <motion.div className={cls('decree-outcome', `is-${t.outcome?.result ?? 'success'}`)} initial={{ y: 6 }} animate={{ y: 0 }} transition={{ duration: 0.25 }}>
             <b>{outcomeText(t, me, nameOf)}</b>
             {fallen.map((f) => (
               <span key={f}>{f}</span>
@@ -520,7 +520,7 @@ function ReactionTray({ onClose }: { onClose: () => void }) {
     onClose();
   };
   return (
-    <motion.div className="reactions parchment" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.15 }} role="dialog" aria-label="Réactions">
+    <motion.div className="reactions parchment" initial={{ y: 10 }} animate={{ y: 0 }} transition={{ duration: 0.15 }} role="dialog" aria-label="Réactions">
       <div className="reaction-emojis">
         {EMOTES.map((e) => (
           <button key={e} type="button" onClick={() => emit(e)} aria-label={`Réaction ${e}`}>
@@ -682,7 +682,7 @@ export function Table({ view }: { view: RoomView }) {
       <header className="topbar">
         <span className="topbar-title">
           <Seal className="topbar-seal" />
-          <span>Tour {t.number}</span>
+          <span>Coup</span>
         </span>
         <div className="topbar-tools">
           <button type="button" className="icon-btn" aria-label="Les règles" onClick={() => setRulesOpen(true)}>
@@ -731,7 +731,7 @@ export function Table({ view }: { view: RoomView }) {
             </div>
             <div className={cls('dock-cards', busyPad && 'is-small', (mustLose || !!exchange) && 'is-hidden')} aria-label="Tes lettres">
               {hand.map((c) => (
-                <motion.span key={c.id} initial={{ rotateY: 90, opacity: 0 }} animate={{ rotateY: 0, opacity: 1 }} transition={{ duration: 0.35 }}>
+                <motion.span key={c.id} initial={{ scale: 0.7, y: 12 }} animate={{ scale: 1, y: 0 }} transition={{ duration: 0.3 }}>
                   <CardFace c={c.character} label={`Ta carte : ${CHARACTER_INFO[c.character].name}`} />
                 </motion.span>
               ))}

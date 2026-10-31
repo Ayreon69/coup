@@ -336,7 +336,8 @@ button {
   flex-direction: column;
   width: var(--w);
   aspect-ratio: 5 / 7;
-  padding: 5%;
+  /* Un pourcentage se calculerait sur la largeur du parent : la marge suit la carte elle-même. */
+  padding: calc(var(--w) * 0.05);
   container-type: inline-size;
   border-radius: 7px;
   background-color: var(--parch);
@@ -360,7 +361,7 @@ button {
   height: 100%;
 }
 .card-name {
-  padding-top: 4%;
+  padding-top: calc(var(--w) * 0.04);
   text-align: center;
   font-family: var(--display);
   font-weight: 700;
@@ -632,8 +633,11 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   margin-top: 6px;
+}
+.share-row .btn {
+  padding: 8px 12px;
 }
 .lobby-grid,
 .final-grid {
@@ -1318,32 +1322,34 @@ button.seat {
 .dock-cards.is-hidden {
   display: none;
 }
-/* Une décision t'attend : le décret se fait discret pour laisser la place à tes boutons. */
-.has-pad .stage {
-  min-height: 0;
-  padding: 8px 10px;
-}
-.has-pad .decree {
-  padding: 10px 14px;
-}
-.has-pad .decree-seal {
-  --s: 46px;
-}
-.has-pad .decree-icon {
-  width: 44px;
-  height: 44px;
-}
-.has-pad .decree-action strong {
-  font-size: 1.4rem;
-}
-.has-pad .decree-body {
-  margin-top: 4px;
-}
-.has-pad .verdict small {
-  display: none;
-}
-.has-pad .verdict-card .card {
-  --w: 44px;
+/* Une décision t'attend sur un petit écran : le décret se fait discret pour laisser la place à tes boutons. */
+@media (max-width: 899px) {
+  .has-pad .stage {
+    min-height: 0;
+    padding: 8px 10px;
+  }
+  .has-pad .decree {
+    padding: 10px 14px;
+  }
+  .has-pad .decree-seal {
+    --s: 46px;
+  }
+  .has-pad .decree-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .has-pad .decree-action strong {
+    font-size: 1.4rem;
+  }
+  .has-pad .decree-body {
+    margin-top: 4px;
+  }
+  .has-pad .verdict small {
+    display: none;
+  }
+  .has-pad .verdict-card .card {
+    --w: 44px;
+  }
 }
 .dock-off,
 .dock-wait {
@@ -1958,6 +1964,12 @@ button.seat {
   }
   .stage {
     min-height: 260px;
+  }
+  .response-btns {
+    grid-template-columns: 1fr 1fr;
+  }
+  .response-btns .is-pass:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 }
 
