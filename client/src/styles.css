@@ -1996,6 +1996,14 @@ button.seat {
 }
 
 /* Lien vers la page qui liste tous les jeux : une ligne de l'accueil, jamais par-dessus le titre */
+.home-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 16px;
+  align-self: flex-start;
+  margin: -14px 0;
+}
 .all-games {
   display: flex;
   align-items: center;
@@ -2007,8 +2015,6 @@ button.seat {
   font-weight: 600;
   line-height: 1;
   text-decoration: none;
-  align-self: flex-start;
-  margin: -14px 0;
 }
 .all-games:hover {
   text-decoration: underline;
