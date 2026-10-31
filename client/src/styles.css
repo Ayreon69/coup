@@ -1994,3 +1994,23 @@ button.seat {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Lien vers la page qui liste tous les jeux : une ligne de l'accueil, jamais par-dessus le titre */
+.all-games {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  min-height: 40px;
+  color: var(--gold-hi);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  align-self: flex-start;
+  margin: -14px 0;
+}
+.all-games:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

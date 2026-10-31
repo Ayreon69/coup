@@ -1,5 +1,5 @@
 // Accueil : les cinq portraits en éventail, pseudo et blason, créer ou rejoindre une table, s'entraîner, les règles.
-import { BookOpen, Bot, LogIn, Plus, Swords } from 'lucide-react';
+import { BookOpen, Bot, House, LogIn, Plus, Swords } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { AVATARS, CHARACTERS } from '../../../shared/protocol';
 import { CardFace, SHIELDS, Shield } from '../components/Art';
@@ -61,6 +61,9 @@ export function Home() {
 
   return (
     <main className="home">
+      <a className="all-games" href="https://akhis-games.onrender.com">
+        <House size={16} aria-hidden /> Tous les jeux
+      </a>
       <header className="home-hero">
         <div className="home-fan" aria-hidden>
           {CHARACTERS.map((c, i) => (
