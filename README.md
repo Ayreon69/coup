@@ -2,7 +2,7 @@
 
 **Deux lettres scellées, et une cour de menteurs.**
 
-👉 **Jouer : adresse à venir** (la première ouverture pourra prendre jusqu'à une minute, le temps que le serveur gratuit se réveille)
+👉 **Jouer : https://coup-nb7f.onrender.com** (la première ouverture peut prendre jusqu'à une minute, le temps que le serveur gratuit se réveille)
 
 Jeu multijoueur en ligne de bluff et d'intrigues, à jouer entre amis depuis un navigateur, sur téléphone ou ordinateur, sans compte ni installation.
 D'après *Coup*, de Rikki Tahta (La Mame Games, Indie Boards & Cards), paru en français sous le nom *Complots* chez Ferti (création de fans, non officielle, avec ses propres visuels).
